@@ -1,0 +1,31 @@
+/**
+ * FILE: jsconfig.json
+ * 
+ * Đây là file cấu hình cho JavaScript/TypeScript trong dự án.
+ * File này giúp IDE (VS Code, WebStorm...) hiểu được cấu trúc project và hỗ trợ tốt hơn.
+ * 
+ * TẠI SAO CẦN FILE NÀY?
+ * - Giúp IDE tự động hoàn thành code (autocomplete) khi dùng alias "@"
+ * - Cho phép IDE "nhảy" đến file khi click vào import (Go to Definition)
+ * - Tránh cảnh báo lỗi "Cannot find module" khi dùng alias
+ * - Cải thiện trải nghiệm phát triển (DX - Developer Experience)
+ * 
+ * LƯU Ý: File này chỉ ảnh hưởng đến IDE, không ảnh hưởng đến cách Vite build project.
+ * Cấu hình thực tế cho Vite nằm trong vite.config.js
+ */
+{
+    "compilerOptions": {
+        // baseUrl: Thư mục gốc để resolve các module
+        // "./src" nghĩa là tất cả import sẽ tính từ thư mục src
+        "baseUrl": "./src",
+        
+        // paths: Định nghĩa các alias cho đường dẫn
+        // "@/*": ["./*"] nghĩa là:
+        //   - Khi import từ "@/something" → sẽ tìm trong "./src/something"
+        //   - Dấu "*" là wildcard, đại diện cho bất kỳ đường dẫn nào
+        //   - Ví dụ: "@/components/Button" → "./src/components/Button"
+        "paths": {
+            "@/*": ["./*"]
+        }
+    }
+}
