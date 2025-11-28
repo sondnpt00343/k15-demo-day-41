@@ -1,24 +1,14 @@
-// import { useEffect } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { fetchProducts } from "@/features/product/productSlice";
-
+import { useMeQuery } from "@/services/auth";
 import {
     useCreateProductMutation,
     useGetProductsQuery,
 } from "@/services/product";
 
 function Home() {
-    // const dispatch = useDispatch();
-    // const products = useSelector((state) => state.product.products);
+    const { isLoading, data: productData } = useGetProductsQuery();
+    const [createProduct] = useCreateProductMutation();
 
-    // useEffect(() => {
-    //     dispatch(fetchProducts());
-    // }, [dispatch]);
-
-    const { isLoading, data } = useGetProductsQuery();
-    const [createProduct, newProductResponse] = useCreateProductMutation();
-
-    console.log(newProductResponse);
+    const { isSuccess, data: currentUser } = useMeQuery();
 
     const handleCreateProduct = () => {
         createProduct({
@@ -28,14 +18,14 @@ function Home() {
 
     return (
         <div>
+            {isSuccess && <h2>Hi, {currentUser.firstName}</h2>}
             <button onClick={handleCreateProduct}>Create new product</button>
-
             <h1>Products</h1>
             <ul>
                 {isLoading ? (
                     <div>Loading...</div>
                 ) : (
-                    data.data.items.map((product) => (
+                    productData.items.map((product) => (
                         <li key={product.id}>
                             {product.id}. {product.title}
                         </li>
