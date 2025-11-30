@@ -9,12 +9,15 @@ import Profile from "./pages/Profile";
 
 zod.config(zod.locales.vi());
 
+// Case 1:
+//
+
 function App() {
     return (
         <Router>
             <Routes>
+                <Route path="/" element={<Home />} />
                 <Route element={<PrivateRoute />}>
-                    <Route path="/" element={<Home />} />
                     <Route path="/profile" element={<Profile />} />
                 </Route>
                 <Route path="login" element={<Login />} />

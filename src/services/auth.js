@@ -8,6 +8,9 @@ export const authApi = createApi({
         me: builder.query({
             query: () => "/auth/me",
         }),
+        devices: builder.query({
+            query: () => "/auth/devices",
+        }),
         login: builder.mutation({
             query: (body) => ({
                 url: "/auth/login",
@@ -18,4 +21,4 @@ export const authApi = createApi({
     }),
 });
 
-export const { useMeQuery, useLoginMutation } = authApi;
+export const { useMeQuery, useLoginMutation, useDevicesQuery } = authApi;

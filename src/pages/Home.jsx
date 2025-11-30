@@ -1,12 +1,15 @@
-import { useMeQuery } from "@/services/auth";
+import { useDevicesQuery, useMeQuery } from "@/services/auth";
 import {
     useCreateProductMutation,
-    useGetProductsQuery,
+    // useGetProductsQuery,
 } from "@/services/product";
 
 function Home() {
-    const { isLoading, data: productData } = useGetProductsQuery();
+    // const { isLoading, data: productData } = useGetProductsQuery();
     const [createProduct] = useCreateProductMutation();
+    const { data: devices } = useDevicesQuery();
+
+    console.log(devices);
 
     const { isSuccess, data: currentUser } = useMeQuery();
 
@@ -21,7 +24,7 @@ function Home() {
             {isSuccess && <h2>Hi, {currentUser.firstName}</h2>}
             <button onClick={handleCreateProduct}>Create new product</button>
             <h1>Products</h1>
-            <ul>
+            {/* <ul>
                 {isLoading ? (
                     <div>Loading...</div>
                 ) : (
@@ -31,7 +34,7 @@ function Home() {
                         </li>
                     ))
                 )}
-            </ul>
+            </ul> */}
         </div>
     );
 }
