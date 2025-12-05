@@ -8,3 +8,12 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <App />
     </ReduxProvider>
 );
+
+// Environments:
+
+// Development/Local
+// Test/Staging
+// UAT
+// Production
+
+console.log(import.meta.env);
