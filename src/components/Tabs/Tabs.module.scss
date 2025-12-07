@@ -1,0 +1,24 @@
+.tabs {
+    padding: 20px;
+}
+
+.tabList {
+    display: flex;
+}
+
+.tabItem {
+    padding: 6px 10px;
+    position: relative;
+    bottom: -1px;
+    border: 1px solid transparent;
+}
+
+.tabContent {
+    padding: 10px;
+    border: 1px solid #333;
+}
+
+.active {
+    border-color: #333;
+    border-bottom-color: #fff;
+}

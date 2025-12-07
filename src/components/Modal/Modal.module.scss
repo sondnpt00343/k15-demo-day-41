@@ -1,0 +1,70 @@
+.wrapper {
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn ease 1s;
+
+    &.closing {
+        animation: fadeOut ease 1s forwards;
+
+        .content {
+            animation: scaleDown ease 1s forwards;
+        }
+    }
+}
+
+.wrapper,
+.overlay {
+    position: fixed;
+    inset: 0;
+}
+
+.overlay {
+    background: rgba($color: #000000, $alpha: 0.7);
+}
+
+.content {
+    position: relative;
+    background: #fff;
+    z-index: 1;
+    padding: 12px;
+    border-radius: 8px;
+    animation: scaleUp ease 1s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes scaleUp {
+    from {
+        scale: 0.5;
+    }
+    to {
+        scale: 1;
+    }
+}
+
+@keyframes scaleDown {
+    from {
+        scale: 1;
+    }
+    to {
+        scale: 0.5;
+    }
+}
